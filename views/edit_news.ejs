@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title1%></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-12">
+             <h1>Edit news</h1>
+
+        </div>
+        </div>
+    </div>
+<div class="container text-center">
+    <form method="post" action="/update/<%= post._id%>" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Title</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" name="title" placeholder="Enter your message" value="<%=post.title%>">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Message</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" name="message" placeholder="Enter your message" value="<%=post.message%>">
+        </div>
+        <br>
+        <div class="form-group">
+            <input type="file" class="form-control" id="formGroupExampleInput2" name="image" placeholder="Enter your image">
+            <img src="/<%=post.image%>" width="100" class="img-thumbnail mt-1" />
+
+            <input type="hidden" name="old_image" value="<%=post.image%>" />
+        </div>
+        <br>
+        <button class="btn btn-success">Send</button>
+    </form>
+    </div>
+    
+    
+
+</body>

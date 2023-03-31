@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title1%></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/main.css">
+
+</head>
+<%- include('layout/header') %>
+
+<body>    
+    <div class="container">
+        <div class="row my-4">
+        <div class="col-lg-12">
+            <% if(message) { %>
+                <div class="alert alert-dismissible fade show alert-<%= message.type %>"
+                    role="alert">
+                    <button class="btn-closse" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <strong><%= message.message %></strong>
+                </div>
+            <%} %>
+             <div class="table-responsive">
+                <% if(posts != '') { %>
+                <table class="table table-striped  my-3">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Message</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                  <% posts.forEach((row, index) => { %>
+                    <tr>
+                        <td><%= row.title %></td>
+                        <td><%= row.message %></td>
+                        <td><img src="<%= row.image %>" width="60" class="img-thumbnail"/></td>
+                        <td>
+                            <a href="/edit/<%= row._id %>" class="text-succes">
+                                <i class="fas fa-edit fa=lg mx-1"></i>
+                            </a>
+                            <a href="/delete/<%= row._id %>" class="text-danger">
+                                <i class="fas fa-trash fa=lg mx-1"></i>
+                            </a>
+                        </td>
+                    </tr>
+                  <% }) %> 
+                    </tbody>
+                </table>
+                <% } else { %>
+                    <h1 class="text-center text-secondary mt-5">NO post in the db</h1>
+                    <% } %>
+             </div>
+
+        </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <hr style="margin-top: 30vw;">
+        <div class="row justify-content-evenly">
+            <div class="col-4">
+                <p><img src="logobo.png" id="f_logo">
+                    Bilim-Òrkenieti ұлттық инновациялық<br> ғылыми-зерттеу орталығы</p>
+            </div>
+            <div class="col-4">
+                <div>
+                    <a href="https://www.instagram.com/bilim_orkeniety/"> <i style='font-size:1.5vw' class='fab'>&#xf16d;</i>&nbsp;bilim_orkeniety</a>
+                    <br>
+                    <a href="https://2gis.kz/astana/inside/9570784863328546?m=71.418522%2C51.121393%2F16.9"> <i class='fas fa-map-marker-alt' style='font-size:1.5vw' ></i>&nbsp;Нұр-Сұлтан қаласы, Қабанбай батыр даңғылы 40</a>
+                    <p> <i style='font-size:1.5vw' class='fas'>&#xf095;</i>&nbsp;+7 (747) 628 80 54</p>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.13.2/datatables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("table").DataTable({
+                order: [0, 'desc']
+            });
+        });
+    </script>
+</body>

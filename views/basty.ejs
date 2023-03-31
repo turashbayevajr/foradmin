@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title1%></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/main.css">
+
+</head>
+<body style="font-family: 'Comfortaa', cursive">
+<%- include('layout/header') %>
+
+<div class="section-one">
+    <div class="typewriter">
+        <h3>Кәсібилік, іскерлік, шығармашылық, көшбасшылық!</h3>
+    </div>
+    <div id="more">
+        <p class="section-one-paragraph">BILIM-ÒRKENIETI ҰЛТТЫҚ ИННОВАЦИЯЛЫҚ ҒЫЛЫМИ-ЗЕРТТЕУ ОРТАЛЫҒЫ
+            мемлекетіміздегі білім беру ұйымдарының мұғалімдері мен оқытушыларының инновациялық әдістері
+            мен шығармашылық әлеуетін қалыптастыру, педагогтердің біліктілігін арттыруға, тәжірибе алмасуына ықпал
+            етуге мамандандырылған орталық. Мұнда кәсіби жетік, креативті өз ісінің нағыз мамандары, жоғары квалификациялы, білікті мамандардан
+            құралған команда қызмет атқарады.</p>
+        <%- include('layout/about') %>
+    </div>
+    <br>
+    <button type="button" onclick="toggle()" class="btn btn-outline-primary" id="btnmore" style="margin-left: 44%">More</button>
+</div>
+<hr id="news">
+    <h3 style="margin-left: 40%">Жаңалықтар</h3>
+
+
+<% if(posts != '') { %>
+<% posts.forEach((row, index) => { %>
+<div class="card mb-3 border-0" id="pcard">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="<%= row.image %>" class="img-fluid rounded-start" id="pimg">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><%= row.title %></h5>
+                <p class="card-text"><%= row.message %></p>
+            </div>
+        </div>
+    </div>
+</div>
+<% }) %>
+<% } else { %>
+    <h1 class="text-center text-secondary mt-5">NO post in the db</h1>
+<% } %>
+<br id="ftr">
+<%- include('layout/footer') %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.13.2/datatables.min.js"></script>
+<script>
+    function toggle() {
+        var x = document.getElementById("more");
+        var y= document.getElementById("btnmore")
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            y.textContent="Hide"
+        } else {
+            x.style.display = "none";
+            y.textContent="More"
+        }
+    }
+    $(document).ready(function(){
+        $("table").DataTable({
+            order: [0, 'desc']
+        });
+    });
+</script>
+</body>
