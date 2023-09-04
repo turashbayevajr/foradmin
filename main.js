@@ -6,7 +6,7 @@ const session = require('express-session');
 
 
 const app = express();
-const PORT = process.env.PORT || 6973;
+const PORT = process.env.PORT || 7269;
 
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/uploads'));

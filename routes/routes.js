@@ -106,6 +106,7 @@ router.post('/update/:id',upload, (req, res)=>{
     }
     Post.findByIdAndUpdate(id, {
         message: req.body.message,
+        title: req.body.title,
         image: new_image,
     }, (err, result)=>{
         if(err){
