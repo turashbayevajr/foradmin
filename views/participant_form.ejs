@@ -1,0 +1,78 @@
+<!-- participant_form.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participant Registration</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/main.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<div class="container">
+    <a href="/baiqau" class="btn btn-primary"><i class="fas fa-arrow-left"></i> </a>
+
+    <h1>Participant Registration</h1>
+
+    <form action="/participants/register" method="POST">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="surname">Surname:</label>
+            <input type="text" id="surname" name="surname" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="occupation">Occupation:</label>
+            <input type="text" id="occupation" name="occupation" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" class="form-control" required>
+        </div>
+
+        <input type="hidden" id="eventId" name="eventId" value="<%= eventId %>"> <!-- Hidden field for event ID -->
+
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
+</body>
+
+</html>

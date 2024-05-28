@@ -14,7 +14,6 @@ const postSchema = new Schema({
         type: String,
         required: true,
     },
-    // user_id: Number,
 });
 Post=mongoose.model('Post', postSchema);
 module.exports = Post;

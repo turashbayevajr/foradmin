@@ -5,11 +5,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./css/main.css">
+
 </head>
-<%- include('layout/header') %>
+<style>
+    body {
+        padding: 20px;
+    }
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    h1 {
+        text-align: center;
+    }
+</style>
+
 <body>
+<a href="/home" class="btn btn-primary"><i class="fas fa-arrow-left"></i> </a>
 <div class="container text-center" style="margin-top: 10vw">
+
+    <h1>Add News</h1>
     <form method="post" action="/add" enctype="multipart/form-data">
         <div class="form-group">
             <label for="formGroupExampleInput2">Title</label>
@@ -25,8 +41,22 @@
             <input type="file" class="form-control" id="formGroupExampleInput2" name="image" placeholder="Enter your image">
         </div>
         <br>
-        <button class="btn btn-primary">Send</button>
+        <button class="btn btn-primary">Add</button>
     </form>
     </div>
 
+<script>
+    window.onload = function() {
+        document.getElementById('popup').style.display = 'block';
+    };
+
+    // Prevent form submission until the correct password is entered
+    document.getElementById('secretForm').onsubmit = function(event) {
+        const secretWord = document.getElementById('secretWord').value;
+        if (secretWord !== 'qolshatyr') {
+            event.preventDefault(); // Prevent form submission
+            alert('Access denied! Invalid secret word.');
+        }
+    };
+</script>
 </body>

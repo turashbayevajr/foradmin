@@ -1,4 +1,4 @@
-//imports
+//main.js
 require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require('express');
@@ -6,7 +6,7 @@ const session = require('express-session');
 
 
 const app = express();
-const PORT = process.env.PORT || 7269;
+const PORT = process.env.PORT || 1972;
 
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/uploads'));
@@ -35,6 +35,7 @@ delete req.session.message;
 next();
 });
 
+
 //set template engine
 app.set('view engine', 'ejs');
 
@@ -42,5 +43,5 @@ app.set('view engine', 'ejs');
 app.use("", require("./routes/routes"));
 
 app.listen(PORT, function () {
-    console.log('Server is started on http://127.0.0.1:'+PORT);
+    console.log('Server is started on http://127.0.0.1:'+PORT+'/basty');
   });

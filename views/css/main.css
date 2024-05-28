@@ -6,6 +6,7 @@ body{
     font-family: 'Comfortaa', cursive;
     align-items: center;
     overflow: scroll;
+    padding: 20px;
 }
 .col-lg-12{
     margin-top: 5vw;
